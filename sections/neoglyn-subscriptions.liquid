@@ -1,0 +1,358 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .neoglyn-autopilot {
+    background-color: var(--color-background); /* White */
+    color: var(--color-foreground); /* Midnight Blue */
+    font-family: var(--font-body-family);
+  }
+
+  .neoglyn-autopilot__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .neoglyn-autopilot__badge {
+    display: inline-block;
+    background-color: rgba(130, 217, 185, 0.15); /* Light Mint */
+    color: #001F3F; /* Midnight Blue */
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .neoglyn-autopilot__heading {
+    font-family: var(--font-heading-family);
+    font-size: clamp(3.2rem, 4vw, 4.8rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    color: var(--color-foreground);
+    line-height: 1.2;
+  }
+
+  .neoglyn-autopilot__subheading {
+    font-size: 1.8rem;
+    margin-bottom: 5rem;
+    opacity: 0.8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .neoglyn-autopilot__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 750px) {
+    .neoglyn-autopilot__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .neoglyn-autopilot__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(0, 31, 63, 0.05);
+  }
+
+  .neoglyn-autopilot__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .neoglyn-autopilot__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .neoglyn-autopilot__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4rem 0;
+  }
+
+  .neoglyn-autopilot__benefit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .neoglyn-autopilot__benefit-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1.5rem;
+    fill: #82D9B9; /* Mint Checkmark/Icon */
+    flex-shrink: 0;
+  }
+
+  /* Frequency Selector */
+  .neoglyn-autopilot__selector {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .neoglyn-autopilot__selector-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    color: #001F3F;
+  }
+
+  .neoglyn-autopilot__options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .neoglyn-autopilot__radio {
+    display: none;
+  }
+
+  .neoglyn-autopilot__label {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    border: 1px solid rgba(0, 31, 63, 0.2);
+    padding: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .neoglyn-autopilot__radio:checked + .neoglyn-autopilot__label {
+    background-color: #001F3F; /* Midnight Blue Active */
+    color: #FFFFFF;
+    border-color: #001F3F;
+  }
+
+  .neoglyn-autopilot__label:hover {
+    border-color: #001F3F;
+  }
+
+  /* CTA Button */
+  .neoglyn-autopilot__button {
+    display: inline-block;
+    width: 100%;
+    background-color: #82D9B9;
+    color: #001F3F;
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 1.8rem;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+  }
+
+  .neoglyn-autopilot__button:hover {
+    background-color: #001F3F;
+    color: #FFFFFF;
+  }
+{%- endstyle -%}
+
+<div class="neoglyn-autopilot section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="neoglyn-autopilot__container">
+    
+    <div class="neoglyn-autopilot__badge">{{ section.settings.badge }}</div>
+    <h2 class="neoglyn-autopilot__heading">{{ section.settings.heading }}</h2>
+    <p class="neoglyn-autopilot__subheading">{{ section.settings.subheading }}</p>
+
+    <div class="neoglyn-autopilot__grid">
+      <div class="neoglyn-autopilot__image-wrapper">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 800 | image_tag: class: 'neoglyn-autopilot__image', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'product-apparel-1' | placeholder_svg_tag: 'neoglyn-autopilot__image placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="neoglyn-autopilot__content">
+        <ul class="neoglyn-autopilot__benefits">
+          {%- for block in section.blocks -%}
+            <li class="neoglyn-autopilot__benefit" {{ block.shopify_attributes }}>
+              <svg class="neoglyn-autopilot__benefit-icon" viewBox="0 0 24 24"><path d="M9 16.17-1-1-1.41-1.41 9 19 21-7-1.41-1.41z"/></svg>
+              <span>{{ block.settings.benefit }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <div class="neoglyn-autopilot__selector">
+          <h3 class="neoglyn-autopilot__selector-title">{{ section.settings.selector_title }}</h3>
+          <div class="neoglyn-autopilot__options">
+            <input type="radio" id="freq-30" name="subscription-frequency" class="neoglyn-autopilot__radio" checked>
+            <label for="freq-30" class="neoglyn-autopilot__label">30 Days</label>
+            
+            <input type="radio" id="freq-60" name="subscription-frequency" class="neoglyn-autopilot__radio">
+            <label for="freq-60" class="neoglyn-autopilot__label">60 Days</label>
+            
+            <input type="radio" id="freq-90" name="subscription-frequency" class="neoglyn-autopilot__radio">
+            <label for="freq-90" class="neoglyn-autopilot__label">90 Days</label>
+          </div>
+        </div>
+
+        <a href="{{ section.settings.button_link }}" class="neoglyn-autopilot__button">{{ section.settings.button_label }}</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Neoglyn Glow Autopilot",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "Subscribe & Save 15%"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Glow Autopilot"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Never run out of your favorite serums and masks. Clinical-grade results delivered straight to your door on your schedule."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Subscription Bundle Image"
+    },
+    {
+      "type": "text",
+      "id": "selector_title",
+      "label": "Frequency Selector Title",
+      "default": "Choose replenishment frequency:"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Start Subscription"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 72
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit Text",
+          "default": "Save 15% on every shipment"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn Glow Autopilot",
+      "category": "Subscriptions",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit": "Save 15% on every shipment"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit": "Modify or cancel anytime"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit": "Free priority shipping"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit": "Exclusive VIP gifts & samples"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

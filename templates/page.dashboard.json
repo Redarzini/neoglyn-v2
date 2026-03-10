@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "dashboard": {
+      "type": "neoglyn-dashboard",
+      "settings": {
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "dashboard"
+  ]
+}
