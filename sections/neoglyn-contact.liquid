@@ -1,0 +1,332 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .neoglyn-contact {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body-family);
+  }
+
+  .neoglyn-contact__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .neoglyn-contact__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .neoglyn-contact__badge {
+    display: inline-block;
+    background-color: rgba(130, 217, 185, 0.15); /* Light Mint */
+    color: #001F3F; /* Midnight Blue */
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .neoglyn-contact__title {
+    font-family: var(--font-heading-family);
+    font-size: clamp(3.2rem, 4vw, 4.8rem);
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    color: var(--color-foreground);
+    line-height: 1.2;
+  }
+
+  .neoglyn-contact__subtitle {
+    font-size: 1.8rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Form Styles */
+  .neoglyn-contact__form {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    border-radius: 8px;
+    padding: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 31, 63, 0.05);
+  }
+
+  .neoglyn-contact__field {
+    margin-bottom: 2.5rem;
+  }
+
+  .neoglyn-contact__label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #001F3F;
+  }
+
+  .neoglyn-contact__input,
+  .neoglyn-contact__textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid rgba(0, 31, 63, 0.2);
+    color: #001F3F;
+    padding: 1.5rem;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .neoglyn-contact__input:focus,
+  .neoglyn-contact__textarea:focus {
+    border-color: #82D9B9;
+    box-shadow: 0 0 0 1px #82D9B9;
+  }
+
+  .neoglyn-contact__textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .neoglyn-contact__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .neoglyn-contact__row {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .neoglyn-contact__button {
+    display: inline-block;
+    width: 100%;
+    background-color: #82D9B9; /* Bright Mint */
+    color: #001F3F; /* Midnight Blue */
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding: 1.8rem;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  .neoglyn-contact__button:hover {
+    background-color: #001F3F;
+    color: #FFFFFF;
+  }
+
+  .form-status {
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+  }
+  .form-status-list {
+    margin: 0;
+    padding-left: 2rem;
+  }
+  .form-status--success {
+    background-color: rgba(130, 217, 185, 0.2);
+    color: #001F3F;
+    border: 1px solid #82D9B9;
+  }
+  .form-status--error {
+    background-color: rgba(255, 0, 0, 0.05);
+    color: red;
+    border: 1px solid red;
+  }
+
+{%- endstyle -%}
+
+<div class="neoglyn-contact section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="neoglyn-contact__container">
+    
+    <div class="neoglyn-contact__header">
+      <div class="neoglyn-contact__badge">{{ section.settings.badge }}</div>
+      <h1 class="neoglyn-contact__title">{{ section.settings.heading }}</h1>
+      <p class="neoglyn-contact__subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="neoglyn-contact__form">
+      {%- form 'contact', id: 'ContactForm' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="form-status form-status--success" tabindex="-1" autofocus>
+            {{ 'templates.contact.form.post_success' | t }}
+          </div>
+        {%- elsif form.errors -%}
+          <div class="form-status form-status--error">
+            <p tabindex="-1" autofocus>{{ 'templates.contact.form.error_heading' | t }}</p>
+            <ul class="form-status-list">
+              <li>
+                <a href="#ContactForm-email">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="neoglyn-contact__row">
+          <div class="neoglyn-contact__field">
+            <label class="neoglyn-contact__label" for="ContactForm-name">Name</label>
+            <input
+              class="neoglyn-contact__input"
+              autocomplete="name"
+              type="text"
+              id="ContactForm-name"
+              name="contact[{{ 'templates.contact.form.name' | t }}]"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              placeholder="First & Last Name"
+            >
+          </div>
+          <div class="neoglyn-contact__field">
+            <label class="neoglyn-contact__label" for="ContactForm-email">Email <span aria-hidden="true">*</span></label>
+            <input
+              autocomplete="email"
+              type="email"
+              id="ContactForm-email"
+              class="neoglyn-contact__input"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+              placeholder="Email Address"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="neoglyn-contact__field">
+          <label class="neoglyn-contact__label" for="ContactForm-phone">Order Number (Optional)</label>
+          <input
+            type="tel"
+            id="ContactForm-phone"
+            class="neoglyn-contact__input"
+            autocomplete="tel"
+            name="contact[{{ 'templates.contact.form.phone' | t }}]"
+            pattern="[0-9\-]*"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            placeholder="e.g. #10245"
+          >
+        </div>
+
+        <div class="neoglyn-contact__field">
+          <label class="neoglyn-contact__label" for="ContactForm-body">How can we assist you?</label>
+          <textarea
+            rows="10"
+            id="ContactForm-body"
+            class="neoglyn-contact__textarea"
+            name="contact[{{ 'templates.contact.form.comment' | t }}]"
+            placeholder="Type your message here..."
+            required
+          >
+            {{- form.body -}}
+          </textarea>
+        </div>
+
+        <button type="submit" class="neoglyn-contact__button">
+          {{ section.settings.button_label }}
+        </button>
+      {%- endform -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Neoglyn Contact Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "VIP Service"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Concierge Support"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our dedicated skincare specialists are available 24/7 to assist with your regimen, track an order, or process a warranty claim."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Submit Button Label",
+      "default": "Send Message"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn Contact Form",
+      "category": "Support"
+    }
+  ]
+}
+{% endschema %}
