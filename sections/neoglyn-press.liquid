@@ -1,0 +1,160 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .neoglyn-press {
+    background-color: var(--color-background); /* White base */
+    color: var(--color-foreground); /* Midnight Blue typography */
+    text-align: center;
+    border-top: 1px solid rgba(0, 31, 63, 0.1);
+    border-bottom: 1px solid rgba(0, 31, 63, 0.1);
+  }
+
+  .neoglyn-press__heading {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: rgba(0, 31, 63, 0.6); /* Muted Midnight Blue */
+  }
+
+  .neoglyn-press__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .neoglyn-press__logos {
+      gap: 6rem;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .neoglyn-press__logo-item {
+    flex: 0 1 calc(50% - 1.5rem);
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .neoglyn-press__logo-item {
+      flex: 1;
+    }
+  }
+
+  .neoglyn-press__image {
+    max-width: 120px;
+    height: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    filter: grayscale(100%) contrast(120%); /* Blend into the clinical aesthetic */
+  }
+
+  .neoglyn-press__image:hover {
+    opacity: 1;
+  }
+
+{%- endstyle -%}
+
+<div class="neoglyn-press section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <p class="neoglyn-press__heading">{{ section.settings.heading }}</p>
+    {%- endif -%}
+
+    <div class="neoglyn-press__logos">
+      {%- for block in section.blocks -%}
+        <div class="neoglyn-press__logo-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 240 | image_tag: class: 'neoglyn-press__image', alt: block.settings.image.alt | default: 'Press Logo', loading: 'lazy' }}
+          {%- else -%}
+            {{ 'logo' | placeholder_svg_tag: 'neoglyn-press__image placeholder-svg' }}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Neoglyn Press Validation",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "As Seen In"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Press Logo",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn Press Validation",
+      "category": "Custom",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

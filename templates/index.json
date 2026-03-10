@@ -11,6 +11,39 @@
         "button_link": "shopify:\/\/collections\/all",
         "label_left": "Before",
         "label_right": "After 4 Weeks",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "neoglyn_press": {
+      "type": "neoglyn-press",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "As Seen In",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -101,17 +134,40 @@
         "padding_bottom": 36
       }
     },
-    "video": {
-      "type": "video",
+    "neoglyn_instagram": {
+      "type": "neoglyn-instagram",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_4": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4"
+      ],
       "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
         "color_scheme": "scheme-1",
+        "heading": "Join the Glow",
+        "subheading": "@Neoglyn #NeoglynSkin",
+        "instagram_link": "",
+        "button_label": "Follow Us",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 72
       }
     },
     "multicolumn": {
@@ -170,10 +226,9 @@
   },
   "order": [
     "neoglyn_hero",
+    "neoglyn_press",
     "rich_text",
     "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "neoglyn_instagram"
   ]
 }
