@@ -1,0 +1,76 @@
+{% schema %}
+{
+  "name": "Neoglyn Flash Sale",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Exclusive Flash Sale"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Save up to 40% on our exclusive luxury beauty tools"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Claim Offer"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn Flash Sale"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="bg-midnight py-12 px-6 md:px-20 text-background-light rounded-[2rem] mx-4 mb-20 overflow-hidden relative font-display">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"></div>
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+    <div>
+      <h2 class="text-primary text-3xl font-bold mb-2">{{ section.settings.heading }}</h2>
+      <p class="text-background-light/80 text-lg">{{ section.settings.subheading }}</p>
+    </div>
+    
+    <div class="flex gap-4">
+      <div class="flex flex-col items-center gap-2">
+        <div class="flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-primary/20">
+          <p class="text-primary text-2xl font-black">02</p>
+        </div>
+        <p class="text-background-light/60 text-xs uppercase font-bold tracking-widest">Hours</p>
+      </div>
+      <div class="text-primary text-3xl self-center font-bold mb-6">:</div>
+      
+      <div class="flex flex-col items-center gap-2">
+        <div class="flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-primary/20">
+          <p class="text-primary text-2xl font-black">45</p>
+        </div>
+        <p class="text-background-light/60 text-xs uppercase font-bold tracking-widest">Minutes</p>
+      </div>
+      <div class="text-primary text-3xl self-center font-bold mb-6">:</div>
+      
+      <div class="flex flex-col items-center gap-2">
+        <div class="flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-primary/20">
+          <p class="text-primary text-2xl font-black">12</p>
+        </div>
+        <p class="text-background-light/60 text-xs uppercase font-bold tracking-widest">Seconds</p>
+      </div>
+    </div>
+    
+    {% if section.settings.btn_label != blank %}
+    <a href="{{ section.settings.btn_link | default: '#' }}" class="flex items-center justify-center bg-primary text-midnight px-10 h-14 rounded-lg font-bold hover:bg-background-light transition-colors border-2 border-primary hover:border-midnight">
+        {{ section.settings.btn_label }}
+    </a>
+    {% endif %}
+  </div>
+</section>

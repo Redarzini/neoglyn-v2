@@ -1,201 +1,12 @@
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-
-  .neoglyn-faq {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-body-family);
-  }
-
-  .neoglyn-faq__container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .neoglyn-faq__heading {
-    text-align: center;
-    font-family: var(--font-heading-family);
-    font-size: clamp(3rem, 4vw, 4.5rem);
-    font-weight: 700;
-    margin: 0 0 4rem 0;
-    color: var(--color-foreground);
-  }
-
-  .neoglyn-faq__item {
-    border-bottom: 1px solid rgba(0, 31, 63, 0.1);
-  }
-
-  .neoglyn-faq__item:first-child {
-    border-top: 1px solid rgba(0, 31, 63, 0.1);
-  }
-
-  .neoglyn-faq__button {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 2.5rem 0;
-    font-family: var(--font-heading-family);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-foreground);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.2s ease;
-  }
-
-  .neoglyn-faq__button:hover {
-    color: #82D9B9; /* Mint highlight */
-  }
-
-  .neoglyn-faq__icon {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    margin-left: 2rem;
-  }
-
-  .neoglyn-faq__icon::before,
-  .neoglyn-faq__icon::after {
-    content: '';
-    position: absolute;
-    background-color: currentColor;
-    transition: transform 0.3s ease;
-  }
-
-  /* Horizontal line */
-  .neoglyn-faq__icon::before {
-    top: 11px;
-    left: 4px;
-    width: 16px;
-    height: 2px;
-  }
-
-  /* Vertical line */
-  .neoglyn-faq__icon::after {
-    top: 4px;
-    left: 11px;
-    width: 2px;
-    height: 16px;
-  }
-
-  .neoglyn-faq__item.is-active .neoglyn-faq__icon::after {
-    transform: rotate(90deg) scale(0);
-  }
-
-  .neoglyn-faq__content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease;
-    font-size: 1.6rem;
-    line-height: 1.6;
-    opacity: 0.8;
-  }
-
-  .neoglyn-faq__item.is-active .neoglyn-faq__content {
-    max-height: 500px; /* arbitrary large value */
-    padding-bottom: 2.5rem;
-  }
-
-{%- endstyle -%}
-
-<div class="neoglyn-faq section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
-  <div class="neoglyn-faq__container">
-    <h2 class="neoglyn-faq__heading">{{ section.settings.heading }}</h2>
-    
-    <div class="neoglyn-faq__accordion" data-accordion>
-      {%- for block in section.blocks -%}
-        <div class="neoglyn-faq__item" {{ block.shopify_attributes }}>
-          <button class="neoglyn-faq__button" aria-expanded="false" data-accordion-trigger>
-            <span class="neoglyn-faq__question">{{ block.settings.question }}</span>
-            <span class="neoglyn-faq__icon"></span>
-          </button>
-          <div class="neoglyn-faq__content">
-            <div class="neoglyn-faq__answer">
-              {{ block.settings.answer }}
-            </div>
-          </div>
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const accordionTriggers = document.querySelectorAll('[data-accordion-trigger]');
-    
-    accordionTriggers.forEach(trigger => {
-      trigger.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isActive = item.classList.contains('is-active');
-        
-        // Optional: close all others
-        document.querySelectorAll('.neoglyn-faq__item').forEach(otherItem => {
-          otherItem.classList.remove('is-active');
-          otherItem.querySelector('button').setAttribute('aria-expanded', 'false');
-        });
-
-        if (!isActive) {
-          item.classList.add('is-active');
-          this.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  });
-</script>
-
 {% schema %}
 {
   "name": "Neoglyn FAQ",
-  "tag": "section",
-  "class": "section",
   "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color Scheme",
-      "default": "scheme-1"
-    },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Frequently Asked Questions"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 80
+      "default": "How can we help you today?"
     }
   ],
   "blocks": [
@@ -207,27 +18,99 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "How often should I use my LED device?"
+          "default": "How do I charge my device?"
         },
         {
-          "type": "richtext",
+          "type": "textarea",
           "id": "answer",
           "label": "Answer",
-          "default": "<p>For optimal clinical-grade results, we recommend using your device 3-5 times a week for 10 minutes per session.</p>"
+          "default": "Connect the USB-C charging cable provided in the box to a standard 5V adapter."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Neoglyn FAQ",
-      "category": "Support",
-      "blocks": [
-        { "type": "faq_item" },
-        { "type": "faq_item" },
-        { "type": "faq_item" }
-      ]
+      "name": "Neoglyn FAQ"
     }
   ]
 }
 {% endschema %}
+
+<div class="bg-background-light font-display min-h-screen">
+  <!-- Hero Search Section -->
+  <div class="bg-midnight py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-background-light mb-8">{{ section.settings.heading }}</h2>
+      <div class="relative max-w-2xl mx-auto">
+        <div class="flex items-center bg-background-light rounded-2xl shadow-2xl overflow-hidden p-2 border-2 border-transparent focus-within:border-primary transition-colors">
+          <div class="pl-4 pr-2 text-midnight/40">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </div>
+          <input class="w-full border-none focus:ring-0 text-midnight text-lg py-4 placeholder:text-midnight/40 bg-transparent outline-none" placeholder="Search for questions, orders, or device tutorials..." type="text"/>
+          <button class="bg-primary hover:bg-background-light text-midnight border-2 border-primary hover:border-midnight font-bold py-3 px-8 rounded-xl transition-all mx-1">
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap justify-center items-center gap-4">
+        <span class="text-background-light/60 text-sm font-bold uppercase tracking-widest">Popular:</span>
+        <a class="text-primary hover:text-background-light text-sm font-bold bg-primary/10 px-4 py-1.5 rounded-full transition-colors" href="#">Getting Started</a>
+        <a class="text-primary hover:text-background-light text-sm font-bold bg-primary/10 px-4 py-1.5 rounded-full transition-colors" href="#">International Shipping</a>
+        <a class="text-primary hover:text-background-light text-sm font-bold bg-primary/10 px-4 py-1.5 rounded-full transition-colors" href="#">Warranty Claims</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div class="max-w-4xl mx-auto px-6 py-20">
+    <div class="flex flex-col gap-6">
+      {% for block in section.blocks %}
+        <details class="group bg-surface rounded-2xl overflow-hidden border border-surface hover:border-primary/50 transition-colors" {{ block.shopify_attributes }}>
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none py-6 px-8 text-lg text-midnight">
+            <span>{{ block.settings.question }}</span>
+            <span class="transition group-open:rotate-180">
+              <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+            </span>
+          </summary>
+          <div class="text-midnight/70 group-open:animate-fadeIn px-8 pb-6 leading-relaxed">
+            <p>{{ block.settings.answer }}</p>
+          </div>
+        </details>
+      {% else %}
+        <!-- Demo FAQs -->
+        <details class="group bg-surface rounded-2xl overflow-hidden border border-surface hover:border-primary/50 transition-colors">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none py-6 px-8 text-lg text-midnight">
+             <span>How do I charge my Neoglyn Glyn Pro for the first time?</span>
+             <span class="transition group-open:rotate-180">
+               <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+             </span>
+          </summary>
+          <div class="text-midnight/70 px-8 pb-6 leading-relaxed">
+             <p>Before your first use, connect the USB-C charging cable provided in the box to a standard 5V adapter. Charging typically takes 2 hours for a full cycle.</p>
+          </div>
+        </details>
+        <details class="group bg-surface rounded-2xl overflow-hidden border border-surface hover:border-primary/50 transition-colors">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none py-6 px-8 text-lg text-midnight">
+             <span>Is the device waterproof?</span>
+             <span class="transition group-open:rotate-180">
+               <svg fill="none" height="24" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+             </span>
+          </summary>
+          <div class="text-midnight/70 px-8 pb-6 leading-relaxed">
+             <p>Our devices are water-resistant, making them easy to wipe down with a damp cloth, but they should not be submerged in water or used in the shower.</p>
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+
+    <!-- Contact Support Box -->
+    <div class="mt-16 bg-primary/10 rounded-3xl p-10 text-center border border-primary/20">
+      <h3 class="text-2xl font-bold text-midnight mb-4">Still have questions?</h3>
+      <p class="text-midnight/70 mb-8 max-w-lg mx-auto">If you cannot find answer to your question in our FAQ, you can always contact our professional beauty experts.</p>
+      <a href="/pages/contact" class="inline-flex items-center justify-center bg-midnight text-background-light px-8 py-4 rounded-xl font-bold hover:bg-midnight/80 transition-colors">
+        Contact Support Center
+      </a>
+    </div>
+  </div>
+</div>

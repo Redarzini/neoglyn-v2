@@ -3,232 +3,68 @@
     "neoglyn_hero": {
       "type": "neoglyn-hero",
       "settings": {
-        "color_scheme": "scheme-1",
-        "badge_text": "New Arrival",
-        "heading": "Elevate Your Skincare",
-        "text": "<p>Experience the Neoglyn difference with our clinical-grade LED therapy.<\/p>",
-        "button_label": "Shop Now",
-        "button_link": "shopify:\/\/collections\/all",
-        "label_left": "Before",
-        "label_right": "After 4 Weeks",
-        "padding_top": 0,
-        "padding_bottom": 36
+        "subheading": "Premium Home Care",
+        "heading": "Professional-Grade Luxury, Designed for Your Daily Ritual",
+        "description": "Experience the transformative power of Neoglyn. Our artisan-crafted formulas bring the pinnacle of clinical excellence into the comfort of your home, curating a radiant future for your skin.",
+        "primary_btn_label": "Shop Best Sellers",
+        "secondary_btn_label": "Discover the Ritual"
       }
     },
-    "neoglyn_press": {
-      "type": "neoglyn-press",
-      "blocks": {
-        "logo_1": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_2": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_3": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_4": {
-          "type": "logo",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "logo_1",
-        "logo_2",
-        "logo_3",
-        "logo_4"
-      ],
+    "neoglyn_flash_sale": {
+      "type": "neoglyn-flash-sale",
       "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "As Seen In",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Exclusive Flash Sale",
+        "subheading": "Save up to 40% on our exclusive luxury beauty tools",
+        "btn_label": "Claim Offer",
+        "btn_link": "shopify://collections/all"
       }
     },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
+    "neoglyn_best_sellers": {
+      "type": "neoglyn-best-sellers",
       "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Best Sellers",
+        "subheading": "Curated collections for your skincare ritual",
+        "products_to_show": 3,
+        "view_all_label": "View All Products"
       }
     },
     "neoglyn_instagram": {
       "type": "neoglyn-instagram",
       "blocks": {
-        "image_1": {
-          "type": "image",
+        "instagram_post_1": {
+          "type": "instagram_post",
           "settings": {}
         },
-        "image_2": {
-          "type": "image",
+        "instagram_post_2": {
+          "type": "instagram_post",
           "settings": {}
         },
-        "image_3": {
-          "type": "image",
+        "instagram_post_3": {
+          "type": "instagram_post",
           "settings": {}
         },
-        "image_4": {
-          "type": "image",
+        "instagram_post_4": {
+          "type": "instagram_post",
           "settings": {}
         }
       },
       "block_order": [
-        "image_1",
-        "image_2",
-        "image_3",
-        "image_4"
+        "instagram_post_1",
+        "instagram_post_2",
+        "instagram_post_3",
+        "instagram_post_4"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "Join the Glow",
-        "subheading": "@Neoglyn #NeoglynSkin",
-        "instagram_link": "",
-        "button_label": "Follow Us",
-        "padding_top": 36,
-        "padding_bottom": 72
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "subheading": "Community",
+        "heading": "Glow with Neoglyn",
+        "description": "Follow us @neoglyn_beauty for daily tips and results"
       }
     }
   },
   "order": [
     "neoglyn_hero",
-    "neoglyn_press",
-    "rich_text",
-    "featured_collection",
+    "neoglyn_flash_sale",
+    "neoglyn_best_sellers",
     "neoglyn_instagram"
   ]
 }

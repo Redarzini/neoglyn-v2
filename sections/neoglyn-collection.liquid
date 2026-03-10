@@ -1,0 +1,104 @@
+{% schema %}
+{
+  "name": "Neoglyn Collection Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop All Collections"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover unparalleled beauty tools for your daily ritual"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 12,
+      "label": "Products per page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn Collection Grid"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="px-6 md:px-20 py-12 md:py-20 font-display">
+  <div class="text-center mb-12">
+    <h1 class="text-midnight text-4xl md:text-5xl font-black tracking-tight">{{ collection.title | default: section.settings.heading }}</h1>
+    <p class="text-midnight/60 mt-4 text-lg">{{ collection.description | strip_html | default: section.settings.subheading }}</p>
+  </div>
+
+  {% paginate collection.products by section.settings.products_per_page %}
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {%- for product in collection.products -%}
+        <div class="group cursor-pointer">
+          <a href="{{ product.url }}" class="block">
+            <div class="aspect-[4/5] bg-surface rounded-2xl mb-4 overflow-hidden relative border border-surface group-hover:border-primary/50 transition-colors">
+              <div class="w-full h-full bg-center bg-cover group-hover:scale-105 transition-transform duration-500" style="background-image: url('{{ product.featured_image | image_url: width: 600 }}')"></div>
+              
+              <form method="post" action="/cart/add" class="absolute bottom-4 right-4 z-10">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                <button type="submit" class="bg-background-light text-midnight p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all hover:bg-primary border border-transparent hover:border-midnight" aria-label="Add to cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </button>
+              </form>
+
+              {%- if product.compare_at_price > product.price -%}
+                <span class="absolute top-4 left-4 bg-primary text-midnight text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-midnight">Sale</span>
+              {%- endif -%}
+            </div>
+            
+            <h3 class="font-bold text-lg text-midnight group-hover:text-primary transition-colors">{{ product.title }}</h3>
+            
+            <div class="flex justify-between items-center mt-2">
+              <span class="font-bold text-primary text-lg">{{ product.price | money }}</span>
+              {%- if product.compare_at_price > product.price -%}
+                <span class="text-sm line-through text-midnight/40 ml-2">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          </a>
+        </div>
+      {%- else -%}
+        <div class="col-span-1 md:col-span-3 lg:col-span-4 text-center py-20">
+          <p class="text-midnight/60 text-lg">There are no products in this collection.</p>
+        </div>
+      {%- endfor -%}
+    </div>
+    
+    {%- if paginate.pages > 1 -%}
+      <div class="flex justify-center mt-12 gap-2">
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}" class="px-4 py-2 border border-midnight rounded-lg text-midnight hover:bg-surface font-bold">&larr;</a>
+        {%- endif -%}
+        
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="px-4 py-2 border border-midnight rounded-lg text-midnight hover:bg-surface font-bold">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <span class="px-4 py-2 border border-primary bg-primary rounded-lg text-midnight font-bold">{{ part.title }}</span>
+            {%- else -%}
+              <span class="px-4 py-2 border border-midnight rounded-lg text-midnight font-bold">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}" class="px-4 py-2 border border-midnight rounded-lg text-midnight hover:bg-surface font-bold">&rarr;</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {% endpaginate %}
+</section>

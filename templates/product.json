@@ -1,199 +1,110 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
-      "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title": {
-          "type": "title"
-        },
-        "caption": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        "price": {
-          "type": "price"
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector"
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "description": {
-          "type": "description"
-        },
-        "collapsible-row-0": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials",
-            "icon": "leather",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
-      },
-      "block_order": [
-        "vendor",
-        "title",
-        "caption",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "collapsible-row-0",
-        "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
-      ],
+      "type": "neoglyn-main-product",
       "settings": {
-        "enable_sticky_info": true,
-        "gallery_layout": "stacked",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "subtitle": "Clinical Grade • At-Home Technology",
+        "trust_badge_1": "Free White Glove Shipping",
+        "trust_badge_2": "3-Year Precision Warranty",
+        "trust_badge_3": "FDA Cleared Technology"
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
+    "neoglyn_how_to_use": {
+      "type": "neoglyn-how-to-use",
       "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
+        "step_1": {
+          "type": "step",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "title": "Preparation",
+            "text": "Cleanse skin thoroughly and apply the Silver Conductive Gel to the targeted treatment zones."
           }
         },
-        "image-with-text-1": {
-          "type": "text",
+        "step_2": {
+          "type": "step",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
+            "title": "Treatment",
+            "text": "Glide the flagship device in upward circular motions for 5-10 minutes across face and neck."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Results",
+            "text": "Massage remaining serum into the skin. Repeat 3 times weekly for transformative results."
           }
         }
       },
       "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
+        "step_1",
+        "step_2",
+        "step_3"
       ],
       "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "scheme-2",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "The Neoglyn Ritual",
+        "subheading": "Simplicity meets Clinical Excellence"
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
+    "neoglyn_comparison": {
+      "type": "neoglyn-comparison",
       "blocks": {
-        "column-0": {
-          "type": "column",
+        "spec_1": {
+          "type": "specification",
           "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "feature": "RF Frequency",
+            "brand_value": "1.2 MHz Multi-Polar",
+            "competitor_value": "0.5 MHz Mono-Polar"
           }
         },
-        "column-1": {
-          "type": "column",
+        "spec_2": {
+          "type": "specification",
           "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "feature": "LED Spectrum",
+            "brand_value": "Dual 630nm/830nm",
+            "competitor_value": "Single 630nm"
+          }
+        },
+        "spec_3": {
+          "type": "specification",
+          "settings": {
+            "feature": "Sensing Technology",
+            "brand_value": "Active Thermal Control",
+            "competitor_value": "Passive On/Off"
+          }
+        },
+        "spec_4": {
+          "type": "specification",
+          "settings": {
+            "feature": "Casing Material",
+            "brand_value": "Anodized Silver Ion",
+            "competitor_value": "Polycarbonate Plastic"
+          }
+        },
+        "spec_5": {
+          "type": "specification",
+          "settings": {
+            "feature": "Power Source",
+            "brand_value": "Lithium-Polymer (Wireless)",
+            "competitor_value": "Cabled / DC Power"
           }
         }
       },
       "block_order": [
-        "column-0",
-        "column-1"
+        "spec_1",
+        "spec_2",
+        "spec_3",
+        "spec_4",
+        "spec_5"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Technical Specifications",
+        "brand_column_name": "Flagship Device",
+        "competitor_column_name": "Industry Standard"
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Complete Your Ritual",
         "heading_size": "h2",
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -204,93 +115,6 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
-      }
-    },
-    "neoglyn_how_to_use": {
-      "type": "neoglyn-how-to-use",
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Cleanse",
-            "text": "Start with a freshly cleansed and dried face for optimal LED penetration."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Treatment",
-            "text": "Wear the mask for a 10-minute automated session. Relax and let the light work."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Glow",
-            "text": "Remove mask and follow up with your favorite serums and moisturizers."
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "How to Use",
-        "subheading": "Three simple steps to clinical-grade results from home.",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "neoglyn_comparison": {
-      "type": "neoglyn-comparison",
-      "blocks": {
-        "feature_1": {
-          "type": "feature",
-          "settings": {
-            "feature": "Clinical-Grade LED Technology",
-            "brand_has": true,
-            "other_has": false
-          }
-        },
-        "feature_2": {
-          "type": "feature",
-          "settings": {
-            "feature": "FDA Cleared for At-Home Use",
-            "brand_has": true,
-            "other_has": false
-          }
-        },
-        "feature_3": {
-          "type": "feature",
-          "settings": {
-            "feature": "Lifetime Warranty",
-            "brand_has": true,
-            "other_has": false
-          }
-        },
-        "feature_4": {
-          "type": "feature",
-          "settings": {
-            "feature": "Built-In Eye Protection",
-            "brand_has": true,
-            "other_has": true
-          }
-        }
-      },
-      "block_order": [
-        "feature_1",
-        "feature_2",
-        "feature_3",
-        "feature_4"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "Why Choose Neoglyn",
-        "padding_top": 72,
-        "padding_bottom": 72
       }
     }
   },

@@ -296,6 +296,26 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#82D9B9",
+              "midnight": "#001F3F",
+              "background-light": "#FFFFFF",
+              "background-dark": "#001F3F",
+              "surface": "#f1f4f3",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

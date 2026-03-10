@@ -1,0 +1,173 @@
+{% schema %}
+{
+  "name": "Neoglyn About",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Hero Badge",
+      "default": "The Future of Skincare"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero Heading",
+      "default": "Professional Beauty, Redefined at Home."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Hero Text",
+      "default": "Neoglyn bridges the gap between clinical excellence and your daily ritual with high-end tools designed for everyone. We believe luxury isn't a place you go—it's a standard you keep."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Mission Section"
+    },
+    {
+      "type": "text",
+      "id": "mission_heading",
+      "label": "Mission Heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission Text",
+      "default": "At Neoglyn, we believe that professional-grade skincare shouldn't be confined to a spa. Our mission is to democratize high-end beauty technology, empowering you to achieve salon-quality results from the comfort of your home."
+    },
+    {
+      "type": "header",
+      "content": "Story Section"
+    },
+    {
+      "type": "text",
+      "id": "story_heading",
+      "label": "Story Heading",
+      "default": "The Neoglyn Story"
+    },
+    {
+      "type": "textarea",
+      "id": "story_text_1",
+      "label": "Story Paragraph 1",
+      "default": "Founded by a team of aesthetic experts and design visionaries, Neoglyn was born from a singular observation: the tools used by professionals were effective but uninviting. We set out to change that."
+    },
+    {
+      "type": "textarea",
+      "id": "story_text_2",
+      "label": "Story Paragraph 2",
+      "default": "Our journey began in a small studio with one goal: to create a device that felt as good to hold as the results it produced. Today, Neoglyn is a global community of beauty enthusiasts who refuse to settle for anything less than perfection."
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoglyn About"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="bg-background-light font-display">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-background-light px-6 py-16 lg:px-10 lg:py-24">
+    <div class="mx-auto max-w-[1200px]">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div class="flex flex-col gap-8">
+          <div class="inline-flex w-fit items-center rounded-full bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-midnight border border-primary/20">
+            {{ section.settings.hero_badge }}
+          </div>
+          <h1 class="text-5xl font-extrabold leading-[1.1] tracking-tight text-midnight lg:text-7xl">
+            {{ section.settings.hero_heading }}
+          </h1>
+          <p class="max-w-lg text-lg leading-relaxed text-midnight/70">
+            {{ section.settings.hero_text }}
+          </p>
+          <div class="flex gap-4">
+            <a href="/collections/all" class="flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-sm font-bold text-midnight shadow-lg shadow-primary/20 transition-transform hover:scale-105 border border-primary hover:border-midnight">
+              Explore the Collection
+            </a>
+          </div>
+        </div>
+        <div class="relative aspect-[4/5] overflow-hidden rounded-3xl bg-surface border border-surface">
+          <div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-700" style="background-image: url('{{ section.settings.hero_image | image_url: width: 800 | default: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFyi50bg3ms8KCs1ycphE0Fgp-1opqXrBeVH8TtN25xXkgaExUEXQLWq0AKMF4WXFxQ4TT_azhMeY_ih8L2xtrYSrfLICxhFtRfvr8B-Qej-1l-kKCfU83SkRgTyrdymy3DgCdfhioRGW8Z1Ttt8elMBwzur-1pyB3mcLvshxBR39pdmbv8_uhzBGO2AW-VQrfAAk-BYMVdXgtyVQ4EW-h87jTqNebYlA1FH5oRvu6VQNIxRyrfvzAu6Qb-FNWLMeRcNR1Plp1UDc' }}')"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission -->
+  <section class="bg-surface px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[1200px]">
+      <div class="flex flex-col items-center text-center">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="w-12 h-12 text-primary mb-6">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
+        <h2 class="mb-6 text-3xl font-bold tracking-tight text-midnight lg:text-5xl">{{ section.settings.mission_heading }}</h2>
+        <p class="max-w-2xl text-lg leading-relaxed text-midnight/70">
+          {{ section.settings.mission_text }}
+        </p>
+      </div>
+      <div class="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="group rounded-3xl bg-background-light p-10 transition-all hover:shadow-2xl hover:shadow-primary/10 border border-transparent hover:border-primary/20">
+          <div class="mb-6 inline-flex size-14 items-center justify-center rounded-2xl bg-primary/20 text-midnight text-xl font-black">
+            01
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-midnight">Uncompromising Elegance</h3>
+          <p class="text-midnight/60 leading-relaxed">Every Neoglyn tool is designed to be a centerpiece of your vanity, blending midnight aesthetics with mint accents.</p>
+        </div>
+        <div class="group rounded-3xl bg-background-light p-10 transition-all hover:shadow-2xl hover:shadow-primary/10 border border-transparent hover:border-primary/20">
+          <div class="mb-6 inline-flex size-14 items-center justify-center rounded-2xl bg-primary/20 text-midnight text-xl font-black">
+            02
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-midnight">Simplified Innovation</h3>
+          <p class="text-midnight/60 leading-relaxed">We translate complex light and sonic technologies into intuitive devices that fit seamlessly into your morning routine.</p>
+        </div>
+        <div class="group rounded-3xl bg-background-light p-10 transition-all hover:shadow-2xl hover:shadow-primary/10 border border-transparent hover:border-primary/20">
+          <div class="mb-6 inline-flex size-14 items-center justify-center rounded-2xl bg-primary/20 text-midnight text-xl font-black">
+            03
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-midnight">Total Accessibility</h3>
+          <p class="text-midnight/60 leading-relaxed">Exceptional skin health shouldn't be a luxury of location. We bring the world's best tech to your fingertips, anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Neoglyn Story -->
+  <section class="px-6 py-20 lg:px-10 lg:py-32">
+    <div class="mx-auto max-w-[1200px]">
+      <div class="flex flex-col gap-16 lg:flex-row lg:items-center">
+        <div class="relative order-2 aspect-square overflow-hidden rounded-3xl bg-surface lg:order-1 lg:w-1/2">
+          <div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-1000" style="background-image: url('{{ section.settings.story_image | image_url: width: 800 | default: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBYkGk0WTkEFu4t3M9x3MPVUns5X39gj5EnPAxVUt40ZdmO3JTar_nneiMaqgy7FUuux212Eu9H8MIx7p0tq9ak4U1KpcV9pOhQM0k75emWILKKGYMJ6tOCX25bZsxUVHK46PGZEdQJCXUkTV7bKHImy21nnh-d83arQ-8HoIJ7ZXiyq3K3Tv-z9WWTDuHzUOaYIwG6JBBCGtxFdAmwue9NXWOCA9clmbpMuH0qcd8z0rddQ6kyz21RRMwlhszBuRFelvY612xfT-0' }}')"></div>
+        </div>
+        <div class="order-1 flex flex-col gap-6 lg:order-2 lg:w-1/2 lg:pl-10">
+          <h2 class="text-4xl font-bold tracking-tight text-midnight lg:text-5xl">{{ section.settings.story_heading }}</h2>
+          <p class="text-lg leading-relaxed text-midnight/70">
+            {{ section.settings.story_text_1 }}
+          </p>
+          <p class="text-lg leading-relaxed text-midnight/70">
+            {{ section.settings.story_text_2 }}
+          </p>
+          <div class="mt-8 flex items-center gap-4">
+            <div class="h-px w-24 bg-primary"></div>
+            <span class="font-serif italic text-midnight/40 text-xl font-bold">Since 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
